@@ -3,7 +3,8 @@ import pickle
 import pandas as pd
 
 # Load model
-model = pickle.load(open("model.pkl", "rb"))
+with open("model.pkl", "rb") as file:
+    model = pickle.load(file)
 
 # Load dataset (for column names)
 df = pd.read_csv("Lung Cancer Dataset.csv")
