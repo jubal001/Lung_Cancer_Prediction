@@ -83,3 +83,14 @@ user_msg = st.text_input("Ask a question")
 if user_msg:
     response = chatbot(user_msg)
     st.write("🤖:", response)
+
+    answer = response.choices[0].message.content.strip()
+
+    # Show assistant response
+    with st.chat_message("assistant"):
+        st.markdown(answer)
+
+    # Save assistant response
+    st.session_state.conversation_history.append(
+        {"role": "assistant", "content": answer}
+    )
